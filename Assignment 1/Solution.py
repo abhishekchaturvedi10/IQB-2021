@@ -1,7 +1,6 @@
 '''
     Name : ABHISHEK CHATURVEDI
     Roll No.: 2019401
-
     ** The written answers are in the write-up given with this file **
 '''
 
@@ -139,21 +138,21 @@ def local_align(sequence1, sequence2):
 
             # If the corresponding characters of the sequences match then we take the max of upper cell score + gap score, 
             # left cell score + gap score and diagonally left cell score + match score
-        	if(sequence2[i-1]==sequence1[j-1]):
-        		DP[i][j] = max(0, DP[i][j-1] + gap, DP[i-1][j] + gap, DP[i-1][j-1] + match)
+            if(sequence2[i-1]==sequence1[j-1]):
+                DP[i][j] = max(0, DP[i][j-1] + gap, DP[i-1][j] + gap, DP[i-1][j-1] + match)
 
             # If the corresponding characters of the sequences match then we take the max of upper cell score + gap score, 
             # left cell score + gap score and diagonally left cell score + mismatch score
-        	else:
-        		DP[i][j] = max(0, DP[i][j-1] + gap, DP[i-1][j] + gap, DP[i-1][j-1] + mismatch)
+            else:
+                DP[i][j] = max(0, DP[i][j-1] + gap, DP[i-1][j] + gap, DP[i-1][j-1] + mismatch)
 
             # Check if the score of the current cell is greater than the optimal score or not and if it is then upadte the 
             # optimal score and the set the optimal location to the coordinates of the current cell
-        	if DP[i][j] < optimal_score:
-        		continue
-        	else:
-        		optimal_score = DP[i][j]
-        		optimal_location = (i,j)
+            if DP[i][j] < optimal_score:
+                continue
+            else:
+                optimal_score = DP[i][j]
+                optimal_location = (i,j)
 
 
     # Variables to store the strings of alignment during the traceback in the DP matrix 
@@ -224,20 +223,20 @@ def local_align(sequence1, sequence2):
 # This functions the prints the matrix which here are the DP tables/matrices for the global and local alignment.
 def printDP(matrix, NoOfRows, NoOfColumns):
 
-	print("", end="       ")
-	for i in range(NoOfRows):
-		print('{:3}'.format(sequence1[i]), end="")
-	print()
+    print("", end="       ")
+    for i in range(NoOfRows):
+        print('{:3}'.format(sequence1[i]), end="")
+    print()
 
-	for i in range(NoOfColumns + 1):
-		if i>0:
-			print(sequence2[i-1], end=" ")
-		else:
-			print("", end="  ")
-		for j in range(NoOfRows + 1):
-			print('{:3}'.format(matrix[i][j]), end="")
-		print()
-	print()
+    for i in range(NoOfColumns + 1):
+        if i>0:
+            print(sequence2[i-1], end=" ")
+        else:
+            print("", end="  ")
+        for j in range(NoOfRows + 1):
+            print('{:3}'.format(matrix[i][j]), end="")
+        print()
+    print()
 
 
 
@@ -373,10 +372,10 @@ print(local_alignment_result[2])
 
 print("   ", end="")
 for i in range(len(local_alignment_result[2])):
-	if local_alignment_result[2][i]=='-' or local_alignment_result[3][i]=='-' or local_alignment_result[2][i]!=local_alignment_result[3][i]:
-		print("", end=" ")
-	else:
-		print("|", end="")
+    if local_alignment_result[2][i]=='-' or local_alignment_result[3][i]=='-' or local_alignment_result[2][i]!=local_alignment_result[3][i]:
+        print("", end=" ")
+    else:
+        print("|", end="")
 print()
 
 print("   ", end="")
